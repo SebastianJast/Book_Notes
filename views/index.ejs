@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Przeczytane książki</h1>
+      <a id="newPostBtn" href="/new">Dodaj książke</a>
+      <ul id="postsList">
+        <% books.forEach(book=> { %>
+        <li>
+          <h2><%=book.title%></h2>
+          <p><%=book.author%></p>
+          <p><%=book.review%></p>
+          <% if(book.img === null) { %>
+          <p>Brak okładki</p>
+          <% } else { %>
+          <img
+            src="https://covers.openlibrary.org/b/olid/<%=book.img%>-M.jpg"
+          />
+          <% }; %>
+          <div class="actionButtons">
+            <form action="/" method="post">
+              <button
+                class="edit"
+                type="submit"
+                name="edit"
+                value="<%=book.id%>"
+              >
+                Edycja
+              </button>
+            </form>
+            <form action="/delete" method="post">
+              <button
+                class="delete"
+                type="submit"
+                name="delete"
+                value="<%=book.id%>"
+              >
+                Usuń
+              </button>
+            </form>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </body>
+</html>
