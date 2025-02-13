@@ -2,6 +2,7 @@ CREATE TABLE books (
   id SERIAL PRIMARY KEY,
   title TEXT,
   author TEXT,
-  review TEXT
+  review TEXT,
+  img TEXT
 );
 
